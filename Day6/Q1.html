@@ -1,0 +1,128 @@
+<!-- Question 1:
+Create a array containing five objects with properties {name, age, city, salary}
+A. Display all the objects in a table
+B. Create a search functionality for name and city
+C. Delete button to delete records
+D. Data is not permanent -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question1</title>
+  <style>
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+    .data {
+      font-family: segoe UI;
+      height: 550px;
+      width: 80%;
+      background-color:rgba(233, 135, 135, 0.836);
+      margin-left: 10%;
+      margin-top: 60px;
+      padding: 20px;
+      display: inline-block;
+    }
+    .table {
+      width: 100%;
+      margin-top: 20px;
+    }
+    th,td {
+      height: 40px;
+      text-align: center;
+      padding: 5px;
+    }
+    .form {
+      margin-top: 20px;
+    }
+    input {
+      height: 40px;
+      text-indent: 10px;
+    }
+    button {
+      padding: 10px;
+      margin-left: 30px;
+    }
+    input {
+      margin-left: 35px;
+    }
+    #UpdateButton {
+      padding: 10px;
+      display: grid;
+      margin: auto;
+    }
+    .modal {
+      width: 100%;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      display: none;
+    }
+    .modalchild {
+      height: 200px;
+      width: 65%;
+      background-color: rgba(224, 127, 127, 0.836);
+      margin-left: 15%;
+      margin-top: 185px;
+      display: inline-block;
+      padding: 50px;
+    }
+</style>
+</head>
+
+<body>
+  <div class="modal" onclick="hideModal(event)">
+    <div class="modalchild">
+        <div class="form">
+            <form onsubmit="updateEmployee(event)">
+                <input type="text" required placeholder="Name" id="upname" />
+                <input type="number" required placeholder="Age" id="upage" />
+                <input type="text" required placeholder="City" id="upcity" />
+                <input type="number" required placeholder="Salary" id="upsalary" />
+                <br><br><br>
+                <button type="submit" id="UpdateButton">Update Employee</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="data">
+    <center><h1 style="color:rgba(90, 19, 9, 0.836)">EMPLOYEE DATA</h1></center>
+    <br>
+    <div class="form">
+        <form onsubmit="addEmployee(event)">
+            <input type="text" required placeholder="Name" id="name" />
+            <input type="number" required placeholder="Age" id="age" />
+            <input type="text" required placeholder="City" id="city" />
+            <input type="number" required placeholder="Salary" id="salary" />
+
+            <button type="submit">Add Employee</button>
+        </form>
+    </div>
+
+    <div class="form">
+        <input type="text" placeholder="Search by Name" id="searchName" onkeyup="searchByName()" />
+        <input type="text" placeholder="Search by City" id="searchCity" onkeyup="searchByCity()" />
+    </div>
+
+    <table border="1" class="table" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Sr No.</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>City</th>
+                <th>Salary</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody class="tdata" id="tdata"></tbody>
+    </table>
+</div>
+
+  <script src="Q1.js"></script>
+</body>
+</html>
